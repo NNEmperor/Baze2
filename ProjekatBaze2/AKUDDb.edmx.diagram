@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9aeb6b76df484afa9b1bd7bbc1d16a0a" Name="Diagram1" ZoomLevel="86" >
+        <EntityTypeShape EntityType="AKUDDb.Koreograf" Width="1.5" PointX="12.125" PointY="0.625" />
+        <EntityTypeShape EntityType="AKUDDb.Sastav" Width="1.5" PointX="7.5" PointY="0.625" />
+        <EntityTypeShape EntityType="AKUDDb.Vodi" PointX="9.875" PointY="0.875" Width="1.5" />
+        <EntityTypeShape EntityType="AKUDDb.Igrac" Width="1.5" PointX="3" PointY="0.625" />
+        <EntityTypeShape EntityType="AKUDDb.Pripada" PointX="5.25" PointY="0.875" Width="1.5" />
+        <AssociationConnector Association="AKUDDb.VodiKoreograf" />
+        <AssociationConnector Association="AKUDDb.VodiSastav" />
+        <AssociationConnector Association="AKUDDb.SastavPripada" />
+        <AssociationConnector Association="AKUDDb.IgracPripada" />
+        <EntityTypeShape EntityType="AKUDDb.Proba" Width="1.5" PointX="7.5" PointY="3.375" />
+        <AssociationConnector Association="AKUDDb.SastavProba" />
+        <EntityTypeShape EntityType="AKUDDb.Koncert" Width="1.5" PointX="5.25" PointY="5.875" />
+        <EntityTypeShape EntityType="AKUDDb.Nastupa" Width="1.5" PointX="5.25" PointY="3.375" />
+        <AssociationConnector Association="AKUDDb.IgracNastupa" />
+        <AssociationConnector Association="AKUDDb.KoncertNastupa" />
+        <EntityTypeShape EntityType="AKUDDb.Nosnja" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="AKUDDb.PevackiKoncert" Width="1.5" PointX="3" PointY="6" />
+        <InheritanceConnector EntityType="AKUDDb.PevackiKoncert" />
+        <EntityTypeShape EntityType="AKUDDb.IgrackiKoncert" Width="1.5" PointX="7.5" PointY="6" />
+        <InheritanceConnector EntityType="AKUDDb.IgrackiKoncert" />
+        <EntityTypeShape EntityType="AKUDDb.Muzika" Width="1.5" PointX="9.5" PointY="6" />
+        <AssociationConnector Association="AKUDDb.MuzikaIgrackiKoncert" />
+        <AssociationConnector Association="AKUDDb.NastupaNosnja" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

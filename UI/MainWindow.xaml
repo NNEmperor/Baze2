@@ -1,0 +1,304 @@
+﻿<Window x:Class="UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="LightGreen">
+        <Button x:Name="ExitButton" Click="ExitButton_Click" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0, 0, 50, 50" Content="EXIT" Background="Wheat" />
+        <Button x:Name="AddButton" Click="AddButton_Click" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50, 0, 0, 50" Content="ADD" Background="Wheat" />
+
+        <TabControl x:Name="Tabs" BorderBrush="Transparent" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Center" Width="800" Height="300" Margin="0, 0, 0,0">
+            <TabItem Header="Igraci" Background="Wheat">
+                <DataGrid x:Name="myDataGridIgraci" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalAlignment="Top" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding ID_IG}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ime" Binding="{Binding IME_IG}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Prezime" Binding="{Binding PR_IG}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Pol" Binding="{Binding POL_IG}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Visina" Binding="{Binding VIS_IG}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="Akcije" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="50" x:Name="buttonChange" Content="Izmeni" Click="buttonChangeIgrac_Click" />
+                                        <Button Width="50" x:Name="buttonDelete" Content="Obrisi" Click="buttonDeleteIgrac_Click" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Koreografi" Background="Wheat">
+                <DataGrid x:Name="myDataGridKoreografi" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalAlignment="Top">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding ID_KOR}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ime" Binding="{Binding IME_KOR}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Prezime" Binding="{Binding PR_KOR}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="Akcije" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="50" x:Name="buttonChange" Content="Izmeni" Click="buttonChangeKoreograf_Click" />
+                                        <Button Width="50" x:Name="buttonDelete" Content="Obrisi"  Click="buttonDeleteKoreograf_Click"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Muzike" Background="Wheat">
+                <DataGrid x:Name="myDataGridMuzika" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalAlignment="Top">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding ID_MUZ}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Tip" Binding="{Binding TIP_MUZ}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="Akcije" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="50" x:Name="buttonChange" Content="Izmeni" Click="buttonChangeMuzika_Click"/>
+                                        <Button Width="50" x:Name="buttonDelete" Content="Obrisi"  Click="buttonDeleteMuzika_Click"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Nosnje" Background="Wheat">
+                <DataGrid x:Name="myDataGridNosnja" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalAlignment="Top">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding ID_NOS}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ime" Binding="{Binding IME_NOS}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="ID Igraca" Binding="{Binding NastupaIgracID_IG}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="ID Koncerta" Binding="{Binding NastupaKoncertID_KC}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="Akcije" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="50" x:Name="buttonChange" Content="Izmeni"  Click="buttonChangeNosnja_Click"/>
+                                        <Button Width="50" x:Name="buttonDelete" Content="Obrisi" Click="buttonDeleteNosnja_Click"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Probe" Background="Wheat" >
+                <DataGrid x:Name="myDataGridProba" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalAlignment="Top">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding ID_PROB}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Tip" Binding="{Binding TIP_PROB}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Vreme" Binding="{Binding VR_PROB}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="Akcije" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="50" x:Name="buttonChange" Content="Izmeni" Click="buttonChangeProba_Click" />
+                                        <Button Width="50" x:Name="buttonDelete" Content="Obrisi" Click="buttonDeleteProba_Click" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Sastavi" Background="Wheat">
+                <DataGrid x:Name="myDataGridSastav" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalAlignment="Top">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding ID_SS}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ime" Binding="{Binding IME_SS}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="Akcije" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="50" x:Name="buttonChange" Content="Izmeni" Click="buttonChangeSastav_Click" />
+                                        <Button Width="50" x:Name="buttonDelete" Content="Obrisi" Click="buttonDeleteSastav_Click" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Vodjenje" Background="Wheat">
+                <DataGrid x:Name="myDataGridVodjenje" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalAlignment="Top">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id Koreografa" Binding="{Binding KoreografID_KOR}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Id Sastava" Binding="{Binding SastavID_SS}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="Akcije" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="50" x:Name="buttonChange" Content="Izmeni" Click="buttonChangeVodjenje_Click" />
+                                        <Button Width="50" x:Name="buttonDelete" Content="Obrisi" Click="buttonDeleteVodjenje_Click" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Pripadanje" Background="Wheat">
+                <DataGrid x:Name="myDataGridPripadanje" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalAlignment="Top">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id Igraca" Binding="{Binding IgracID_IG}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Id Sastava" Binding="{Binding SastavID_SS}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="Akcije" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="50" x:Name="buttonChange" Content="Izmeni" Click="buttonChangePripadanje_Click" />
+                                        <Button Width="50" x:Name="buttonDelete" Content="Obrisi" Click="buttonDeletePripadanje_Click" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Koncerti" Background="Wheat">
+                <DataGrid x:Name="myDataGridKoncerti" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalAlignment="Top">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding ID_KC}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Vreme odrzavanja" Binding="{Binding VR_KC}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Tip koncerta" Binding="{Binding TIP_KC}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="Akcije" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="50" x:Name="buttonChange" Content="Izmeni" Click="buttonChangeKoncerti_Click" />
+                                        <Button Width="50" x:Name="buttonDelete" Content="Obrisi" Click="buttonDeleteKoncerti_Click" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="IgrackiKoncerti" Background="Wheat">
+                <DataGrid x:Name="myDataGridIgrackiKoncerti" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalAlignment="Top">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding ID_KC}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Id muzicke pratnje" Binding="{Binding MuzikaID_MUZ}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Koreografija" Binding="{Binding IG_KOR}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="Akcije" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="50" x:Name="buttonChange" Content="Izmeni" Click="buttonChangeIgrackiKoncert_Click" />
+                                        <Button Width="50" x:Name="buttonDelete" Content="Obrisi" Click="buttonDeleteIgrackiKoncert_Click" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="PevackiKoncerti" Background="Wheat">
+                <DataGrid x:Name="myDataGridPevackiKoncerti" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalAlignment="Top">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding ID_KC}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Tip pevanja" Binding="{Binding PEV_TIP}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="Akcije" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="50" x:Name="buttonChange" Content="Izmeni" Click="buttonChangePevackiKoncert_Click" />
+                                        <Button Width="50" x:Name="buttonDelete" Content="Obrisi" Click="buttonDeletePevackiKoncert_Click" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Nastupi" Background="Wheat">
+                <DataGrid x:Name="myDataGridNastupi" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" VerticalAlignment="Top">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id Igraca" Binding="{Binding IgracID_IG}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Id Koncerta" Binding="{Binding KoncertID_KC}"></DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="Akcije" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="50" x:Name="buttonChange" Content="Izmeni" Click="buttonChangeNastupi_Click" />
+                                        <Button Width="50" x:Name="buttonDelete" Content="Obrisi" Click="buttonDeleteNastupi_Click" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+
+
+
+    </Grid>
+</Window>

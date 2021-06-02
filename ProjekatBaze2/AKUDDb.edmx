@@ -1,0 +1,702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AKUDDb.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="AKUDDbStoreContainer">
+    <EntitySet Name="Koreografi" EntityType="AKUDDb.Store.Koreografi" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sastavi" EntityType="AKUDDb.Store.Sastavi" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vodjenje" EntityType="AKUDDb.Store.Vodjenje" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Igraci" EntityType="AKUDDb.Store.Igraci" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pripadanje" EntityType="AKUDDb.Store.Pripadanje" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Probe" EntityType="AKUDDb.Store.Probe" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Koncerti" EntityType="AKUDDb.Store.Koncerti" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Nastupaju" EntityType="AKUDDb.Store.Nastupaju" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Nosnje" EntityType="AKUDDb.Store.Nosnje" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Muzike" EntityType="AKUDDb.Store.Muzike" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Koncerti_IgrackiKoncert" EntityType="AKUDDb.Store.Koncerti_IgrackiKoncert" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Koncerti_PevackiKoncert" EntityType="AKUDDb.Store.Koncerti_PevackiKoncert" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="VodiKoreograf" Association="AKUDDb.Store.VodiKoreograf">
+      <End Role="Koreograf" EntitySet="Koreografi" />
+      <End Role="Vodi" EntitySet="Vodjenje" />
+    </AssociationSet>
+    <AssociationSet Name="VodiSastav" Association="AKUDDb.Store.VodiSastav">
+      <End Role="Vodi" EntitySet="Vodjenje" />
+      <End Role="Sastav" EntitySet="Sastavi" />
+    </AssociationSet>
+    <AssociationSet Name="SastavPripada" Association="AKUDDb.Store.SastavPripada">
+      <End Role="Sastav" EntitySet="Sastavi" />
+      <End Role="Pripada" EntitySet="Pripadanje" />
+    </AssociationSet>
+    <AssociationSet Name="IgracPripada" Association="AKUDDb.Store.IgracPripada">
+      <End Role="Igrac" EntitySet="Igraci" />
+      <End Role="Pripada" EntitySet="Pripadanje" />
+    </AssociationSet>
+    <AssociationSet Name="Odrzava" Association="AKUDDb.Store.SastavProba">
+      <End Role="Sastav" EntitySet="Sastavi" />
+      <End Role="Proba" EntitySet="Probe" />
+    </AssociationSet>
+    <AssociationSet Name="IgracNastupa" Association="AKUDDb.Store.IgracNastupa">
+      <End Role="Igrac" EntitySet="Igraci" />
+      <End Role="Nastupa" EntitySet="Nastupaju" />
+    </AssociationSet>
+    <AssociationSet Name="KoncertNastupa" Association="AKUDDb.Store.KoncertNastupa">
+      <End Role="Koncert" EntitySet="Koncerti" />
+      <End Role="Nastupa" EntitySet="Nastupaju" />
+    </AssociationSet>
+    <AssociationSet Name="MuzikaIgrackiKoncert" Association="AKUDDb.Store.MuzikaIgrackiKoncert">
+      <End Role="Muzika" EntitySet="Muzike" />
+      <End Role="IgrackiKoncert" EntitySet="Koncerti_IgrackiKoncert" />
+    </AssociationSet>
+    <AssociationSet Name="NastupaNosnja" Association="AKUDDb.Store.NastupaNosnja">
+      <End Role="Nastupa" EntitySet="Nastupaju" />
+      <End Role="Nosnja" EntitySet="Nosnje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IgrackiKoncert_inherits_Koncert" Association="AKUDDb.Store.FK_IgrackiKoncert_inherits_Koncert">
+      <End Role="Koncert" EntitySet="Koncerti" />
+      <End Role="IgrackiKoncert" EntitySet="Koncerti_IgrackiKoncert" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PevackiKoncert_inherits_Koncert" Association="AKUDDb.Store.FK_PevackiKoncert_inherits_Koncert">
+      <End Role="Koncert" EntitySet="Koncerti" />
+      <End Role="PevackiKoncert" EntitySet="Koncerti_PevackiKoncert" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Koreografi">
+    <Key>
+      <PropertyRef Name="ID_KOR" />
+    </Key>
+    <Property Name="ID_KOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IME_KOR" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PR_KOR" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sastavi">
+    <Key>
+      <PropertyRef Name="ID_SS" />
+    </Key>
+    <Property Name="ID_SS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IME_SS" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vodjenje">
+    <Key>
+      <PropertyRef Name="KoreografID_KOR" />
+      <PropertyRef Name="SastavID_SS" />
+    </Key>
+    <Property Name="KoreografID_KOR" Type="int" Nullable="false" />
+    <Property Name="SastavID_SS" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Igraci">
+    <Key>
+      <PropertyRef Name="ID_IG" />
+    </Key>
+    <Property Name="ID_IG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IME_IG" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PR_IG" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="VIS_IG" Type="float" Nullable="false" />
+    <Property Name="POL_IG" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pripadanje">
+    <Key>
+      <PropertyRef Name="SastavID_SS" />
+      <PropertyRef Name="IgracID_IG" />
+    </Key>
+    <Property Name="SastavID_SS" Type="int" Nullable="false" />
+    <Property Name="IgracID_IG" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Probe">
+    <Key>
+      <PropertyRef Name="ID_PROB" />
+      <PropertyRef Name="SastavID_SS" />
+    </Key>
+    <Property Name="ID_PROB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SastavID_SS" Type="int" Nullable="false" />
+    <Property Name="TIP_PROB" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="VR_PROB" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Koncerti">
+    <Key>
+      <PropertyRef Name="ID_KC" />
+    </Key>
+    <Property Name="ID_KC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VR_KC" Type="datetime" Nullable="false" />
+    <Property Name="TIP_KC" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Nastupaju">
+    <Key>
+      <PropertyRef Name="IgracID_IG" />
+      <PropertyRef Name="KoncertID_KC" />
+    </Key>
+    <Property Name="IgracID_IG" Type="int" Nullable="false" />
+    <Property Name="KoncertID_KC" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Nosnje">
+    <Key>
+      <PropertyRef Name="ID_NOS" />
+    </Key>
+    <Property Name="ID_NOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NastupaIgracID_IG" Type="int" Nullable="false" />
+    <Property Name="NastupaKoncertID_KC" Type="int" Nullable="false" />
+    <Property Name="IME_NOS" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Muzike">
+    <Key>
+      <PropertyRef Name="ID_MUZ" />
+    </Key>
+    <Property Name="ID_MUZ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TIP_MUZ" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Koncerti_IgrackiKoncert">
+    <Key>
+      <PropertyRef Name="ID_KC" />
+    </Key>
+    <Property Name="MuzikaID_MUZ" Type="int" Nullable="false" />
+    <Property Name="IG_KOR" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ID_KC" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Koncerti_PevackiKoncert">
+    <Key>
+      <PropertyRef Name="ID_KC" />
+    </Key>
+    <Property Name="PEV_TIP" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ID_KC" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="VodiKoreograf">
+    <End Role="Koreograf" Type="AKUDDb.Store.Koreografi" Multiplicity="1" />
+    <End Role="Vodi" Type="AKUDDb.Store.Vodjenje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Koreograf">
+        <PropertyRef Name="ID_KOR" />
+      </Principal>
+      <Dependent Role="Vodi">
+        <PropertyRef Name="KoreografID_KOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VodiSastav">
+    <End Role="Vodi" Type="AKUDDb.Store.Vodjenje" Multiplicity="*" />
+    <End Role="Sastav" Type="AKUDDb.Store.Sastavi" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Sastav">
+        <PropertyRef Name="ID_SS" />
+      </Principal>
+      <Dependent Role="Vodi">
+        <PropertyRef Name="SastavID_SS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SastavPripada">
+    <End Role="Sastav" Type="AKUDDb.Store.Sastavi" Multiplicity="1" />
+    <End Role="Pripada" Type="AKUDDb.Store.Pripadanje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sastav">
+        <PropertyRef Name="ID_SS" />
+      </Principal>
+      <Dependent Role="Pripada">
+        <PropertyRef Name="SastavID_SS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IgracPripada">
+    <End Role="Igrac" Type="AKUDDb.Store.Igraci" Multiplicity="1" />
+    <End Role="Pripada" Type="AKUDDb.Store.Pripadanje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Igrac">
+        <PropertyRef Name="ID_IG" />
+      </Principal>
+      <Dependent Role="Pripada">
+        <PropertyRef Name="IgracID_IG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SastavProba">
+    <End Role="Sastav" Type="AKUDDb.Store.Sastavi" Multiplicity="1" />
+    <End Role="Proba" Type="AKUDDb.Store.Probe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sastav">
+        <PropertyRef Name="ID_SS" />
+      </Principal>
+      <Dependent Role="Proba">
+        <PropertyRef Name="SastavID_SS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IgracNastupa">
+    <End Role="Igrac" Type="AKUDDb.Store.Igraci" Multiplicity="1" />
+    <End Role="Nastupa" Type="AKUDDb.Store.Nastupaju" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Igrac">
+        <PropertyRef Name="ID_IG" />
+      </Principal>
+      <Dependent Role="Nastupa">
+        <PropertyRef Name="IgracID_IG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KoncertNastupa">
+    <End Role="Koncert" Type="AKUDDb.Store.Koncerti" Multiplicity="1" />
+    <End Role="Nastupa" Type="AKUDDb.Store.Nastupaju" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Koncert">
+        <PropertyRef Name="ID_KC" />
+      </Principal>
+      <Dependent Role="Nastupa">
+        <PropertyRef Name="KoncertID_KC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MuzikaIgrackiKoncert">
+    <End Role="Muzika" Type="AKUDDb.Store.Muzike" Multiplicity="1" />
+    <End Role="IgrackiKoncert" Type="AKUDDb.Store.Koncerti_IgrackiKoncert" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Muzika">
+        <PropertyRef Name="ID_MUZ" />
+      </Principal>
+      <Dependent Role="IgrackiKoncert">
+        <PropertyRef Name="MuzikaID_MUZ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NastupaNosnja">
+    <End Role="Nastupa" Type="AKUDDb.Store.Nastupaju" Multiplicity="1" />
+    <End Role="Nosnja" Type="AKUDDb.Store.Nosnje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nastupa">
+        <PropertyRef Name="IgracID_IG" />
+        <PropertyRef Name="KoncertID_KC" />
+      </Principal>
+      <Dependent Role="Nosnja">
+        <PropertyRef Name="NastupaIgracID_IG" />
+        <PropertyRef Name="NastupaKoncertID_KC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IgrackiKoncert_inherits_Koncert">
+    <End Role="Koncert" Type="AKUDDb.Store.Koncerti" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="IgrackiKoncert" Type="AKUDDb.Store.Koncerti_IgrackiKoncert" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Koncert">
+        <PropertyRef Name="ID_KC" />
+      </Principal>
+      <Dependent Role="IgrackiKoncert">
+        <PropertyRef Name="ID_KC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PevackiKoncert_inherits_Koncert">
+    <End Role="Koncert" Type="AKUDDb.Store.Koncerti" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PevackiKoncert" Type="AKUDDb.Store.Koncerti_PevackiKoncert" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Koncert">
+        <PropertyRef Name="ID_KC" />
+      </Principal>
+      <Dependent Role="PevackiKoncert">
+        <PropertyRef Name="ID_KC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="AKUDDb" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="AKUDDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Koreografi" EntityType="AKUDDb.Koreograf" />
+          <EntitySet Name="Sastavi" EntityType="AKUDDb.Sastav" />
+          <EntitySet Name="Vodjenje" EntityType="AKUDDb.Vodi" />
+          <EntitySet Name="Igraci" EntityType="AKUDDb.Igrac" />
+          <EntitySet Name="Pripadanje" EntityType="AKUDDb.Pripada" />
+          <AssociationSet Name="VodiKoreograf" Association="AKUDDb.VodiKoreograf">
+            <End Role="Koreograf" EntitySet="Koreografi" />
+            <End Role="Vodi" EntitySet="Vodjenje" />
+          </AssociationSet>
+          <AssociationSet Name="VodiSastav" Association="AKUDDb.VodiSastav">
+            <End Role="Vodi" EntitySet="Vodjenje" />
+            <End Role="Sastav" EntitySet="Sastavi" />
+          </AssociationSet>
+          <AssociationSet Name="SastavPripada" Association="AKUDDb.SastavPripada">
+            <End Role="Sastav" EntitySet="Sastavi" />
+            <End Role="Pripada" EntitySet="Pripadanje" />
+          </AssociationSet>
+          <AssociationSet Name="IgracPripada" Association="AKUDDb.IgracPripada">
+            <End Role="Igrac" EntitySet="Igraci" />
+            <End Role="Pripada" EntitySet="Pripadanje" />
+          </AssociationSet>
+          <EntitySet Name="Probe" EntityType="AKUDDb.Proba" />
+          <AssociationSet Name="Odrzava" Association="AKUDDb.SastavProba">
+            <End Role="Sastav" EntitySet="Sastavi" />
+            <End Role="Proba" EntitySet="Probe" />
+          </AssociationSet>
+          <EntitySet Name="Koncerti" EntityType="AKUDDb.Koncert" />
+          <EntitySet Name="Nastupaju" EntityType="AKUDDb.Nastupa" />
+          <AssociationSet Name="IgracNastupa" Association="AKUDDb.IgracNastupa">
+            <End Role="Igrac" EntitySet="Igraci" />
+            <End Role="Nastupa" EntitySet="Nastupaju" />
+          </AssociationSet>
+          <AssociationSet Name="KoncertNastupa" Association="AKUDDb.KoncertNastupa">
+            <End Role="Koncert" EntitySet="Koncerti" />
+            <End Role="Nastupa" EntitySet="Nastupaju" />
+          </AssociationSet>
+          <EntitySet Name="Nosnje" EntityType="AKUDDb.Nosnja" />
+          <EntitySet Name="Muzike" EntityType="AKUDDb.Muzika" />
+          <AssociationSet Name="MuzikaIgrackiKoncert" Association="AKUDDb.MuzikaIgrackiKoncert">
+            <End Role="Muzika" EntitySet="Muzike" />
+            <End Role="IgrackiKoncert" EntitySet="Koncerti" />
+          </AssociationSet>
+          <AssociationSet Name="NastupaNosnja" Association="AKUDDb.NastupaNosnja">
+            <End Role="Nastupa" EntitySet="Nastupaju" />
+            <End Role="Nosnja" EntitySet="Nosnje" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Koreograf">
+          <Key>
+            <PropertyRef Name="ID_KOR" />
+          </Key>
+          <Property Name="ID_KOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="VodiVise" Relationship="AKUDDb.VodiKoreograf" FromRole="Koreograf" ToRole="Vodi" />
+          <Property Name="IME_KOR" Type="String" Nullable="false" />
+          <Property Name="PR_KOR" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sastav">
+          <Key>
+            <PropertyRef Name="ID_SS" />
+          </Key>
+          <Property Name="ID_SS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="VodiVise" Relationship="AKUDDb.VodiSastav" FromRole="Sastav" ToRole="Vodi" />
+          <NavigationProperty Name="PripadaVise" Relationship="AKUDDb.SastavPripada" FromRole="Sastav" ToRole="Pripada" />
+          <NavigationProperty Name="Probe" Relationship="AKUDDb.SastavProba" FromRole="Sastav" ToRole="Proba" />
+          <Property Name="IME_SS" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vodi">
+          <Key>
+            <PropertyRef Name="KoreografID_KOR" />
+            <PropertyRef Name="SastavID_SS" />
+          </Key>
+          <NavigationProperty Name="Koreograf" Relationship="AKUDDb.VodiKoreograf" FromRole="Vodi" ToRole="Koreograf" />
+          <Property Name="KoreografID_KOR" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sastav" Relationship="AKUDDb.VodiSastav" FromRole="Vodi" ToRole="Sastav" />
+          <Property Name="SastavID_SS" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Igrac">
+          <Key>
+            <PropertyRef Name="ID_IG" />
+          </Key>
+          <Property Name="ID_IG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="PripadaVIse" Relationship="AKUDDb.IgracPripada" FromRole="Igrac" ToRole="Pripada" />
+          <NavigationProperty Name="NastupaVise" Relationship="AKUDDb.IgracNastupa" FromRole="Igrac" ToRole="Nastupa" />
+          <Property Name="IME_IG" Type="String" Nullable="false" />
+          <Property Name="PR_IG" Type="String" Nullable="false" />
+          <Property Name="VIS_IG" Type="Double" Nullable="false" />
+          <Property Name="POL_IG" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pripada">
+          <Key>
+            <PropertyRef Name="SastavID_SS" />
+            <PropertyRef Name="IgracID_IG" />
+          </Key>
+          <NavigationProperty Name="Sastav" Relationship="AKUDDb.SastavPripada" FromRole="Pripada" ToRole="Sastav" />
+          <Property Name="SastavID_SS" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Igrac" Relationship="AKUDDb.IgracPripada" FromRole="Pripada" ToRole="Igrac" />
+          <Property Name="IgracID_IG" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="VodiKoreograf">
+          <End Type="AKUDDb.Koreograf" Role="Koreograf" Multiplicity="1" />
+          <End Type="AKUDDb.Vodi" Role="Vodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Koreograf">
+              <PropertyRef Name="ID_KOR" />
+            </Principal>
+            <Dependent Role="Vodi">
+              <PropertyRef Name="KoreografID_KOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VodiSastav">
+          <End Type="AKUDDb.Vodi" Role="Vodi" Multiplicity="*" />
+          <End Type="AKUDDb.Sastav" Role="Sastav" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Sastav">
+              <PropertyRef Name="ID_SS" />
+            </Principal>
+            <Dependent Role="Vodi">
+              <PropertyRef Name="SastavID_SS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SastavPripada">
+          <End Type="AKUDDb.Sastav" Role="Sastav" Multiplicity="1" />
+          <End Type="AKUDDb.Pripada" Role="Pripada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sastav">
+              <PropertyRef Name="ID_SS" />
+            </Principal>
+            <Dependent Role="Pripada">
+              <PropertyRef Name="SastavID_SS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IgracPripada">
+          <End Type="AKUDDb.Igrac" Role="Igrac" Multiplicity="1" />
+          <End Type="AKUDDb.Pripada" Role="Pripada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Igrac">
+              <PropertyRef Name="ID_IG" />
+            </Principal>
+            <Dependent Role="Pripada">
+              <PropertyRef Name="IgracID_IG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Proba">
+          <Key>
+            <PropertyRef Name="ID_PROB" />
+            <PropertyRef Name="SastavID_SS" />
+          </Key>
+          <Property Name="ID_PROB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Sastav" Relationship="AKUDDb.SastavProba" FromRole="Proba" ToRole="Sastav" />
+          <Property Name="SastavID_SS" Type="Int32" Nullable="false" />
+          <Property Name="TIP_PROB" Type="String" Nullable="false" />
+          <Property Name="VR_PROB" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <Association Name="SastavProba">
+          <End Type="AKUDDb.Sastav" Role="Sastav" Multiplicity="1" />
+          <End Type="AKUDDb.Proba" Role="Proba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sastav">
+              <PropertyRef Name="ID_SS" />
+            </Principal>
+            <Dependent Role="Proba">
+              <PropertyRef Name="SastavID_SS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Koncert">
+          <Key>
+            <PropertyRef Name="ID_KC" />
+          </Key>
+          <Property Name="ID_KC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Nastupi" Relationship="AKUDDb.KoncertNastupa" FromRole="Koncert" ToRole="Nastupa" />
+          <Property Name="VR_KC" Type="DateTime" Nullable="false" />
+          <Property Name="TIP_KC" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nastupa" >
+          <Key>
+            <PropertyRef Name="IgracID_IG" />
+            <PropertyRef Name="KoncertID_KC" />
+          </Key>
+          <NavigationProperty Name="Igrac" Relationship="AKUDDb.IgracNastupa" FromRole="Nastupa" ToRole="Igrac" />
+          <Property Name="IgracID_IG" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Koncert" Relationship="AKUDDb.KoncertNastupa" FromRole="Nastupa" ToRole="Koncert" />
+          <Property Name="KoncertID_KC" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Nosnje" Relationship="AKUDDb.NastupaNosnja" FromRole="Nastupa" ToRole="Nosnja" />
+        </EntityType>
+        <Association Name="IgracNastupa">
+          <End Type="AKUDDb.Igrac" Role="Igrac" Multiplicity="1" />
+          <End Type="AKUDDb.Nastupa" Role="Nastupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Igrac">
+              <PropertyRef Name="ID_IG" />
+            </Principal>
+            <Dependent Role="Nastupa">
+              <PropertyRef Name="IgracID_IG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KoncertNastupa">
+          <End Type="AKUDDb.Koncert" Role="Koncert" Multiplicity="1" />
+          <End Type="AKUDDb.Nastupa" Role="Nastupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Koncert">
+              <PropertyRef Name="ID_KC" />
+            </Principal>
+            <Dependent Role="Nastupa">
+              <PropertyRef Name="KoncertID_KC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Nosnja">
+          <Key>
+            <PropertyRef Name="ID_NOS" />
+          </Key>
+          <Property Name="ID_NOS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Nastupa" Relationship="AKUDDb.NastupaNosnja" FromRole="Nosnja" ToRole="Nastupa" />
+          <Property Name="NastupaIgracID_IG" Type="Int32" Nullable="false" />
+          <Property Name="NastupaKoncertID_KC" Type="Int32" Nullable="false" />
+          <Property Name="IME_NOS" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PevackiKoncert" BaseType="AKUDDb.Koncert" >
+          <Property Name="PEV_TIP" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IgrackiKoncert" BaseType="AKUDDb.Koncert" >
+          <NavigationProperty Name="Muzika" Relationship="AKUDDb.MuzikaIgrackiKoncert" FromRole="IgrackiKoncert" ToRole="Muzika" />
+          <Property Name="MuzikaID_MUZ" Type="Int32" Nullable="false" />
+          <Property Name="IG_KOR" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Muzika">
+          <Key>
+            <PropertyRef Name="ID_MUZ" />
+          </Key>
+          <Property Name="ID_MUZ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="IgrackiKoncerti" Relationship="AKUDDb.MuzikaIgrackiKoncert" FromRole="Muzika" ToRole="IgrackiKoncert" />
+          <Property Name="TIP_MUZ" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="MuzikaIgrackiKoncert">
+          <End Type="AKUDDb.Muzika" Role="Muzika" Multiplicity="1" />
+          <End Type="AKUDDb.IgrackiKoncert" Role="IgrackiKoncert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Muzika">
+              <PropertyRef Name="ID_MUZ" />
+            </Principal>
+            <Dependent Role="IgrackiKoncert">
+              <PropertyRef Name="MuzikaID_MUZ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="NastupaNosnja">
+          <End Type="AKUDDb.Nastupa" Role="Nastupa" Multiplicity="1" />
+          <End Type="AKUDDb.Nosnja" Role="Nosnja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nastupa">
+              <PropertyRef Name="IgracID_IG" />
+              <PropertyRef Name="KoncertID_KC" />
+            </Principal>
+            <Dependent Role="Nosnja">
+              <PropertyRef Name="NastupaIgracID_IG" />
+              <PropertyRef Name="NastupaKoncertID_KC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AKUDDbStoreContainer" CdmEntityContainer="AKUDDbContext">
+    <EntitySetMapping Name="Koreografi">
+      <EntityTypeMapping TypeName="IsTypeOf(AKUDDb.Koreograf)">
+        <MappingFragment StoreEntitySet="Koreografi">
+          <ScalarProperty Name="ID_KOR" ColumnName="ID_KOR" />
+          <ScalarProperty Name="IME_KOR" ColumnName="IME_KOR" />
+          <ScalarProperty Name="PR_KOR" ColumnName="PR_KOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sastavi">
+      <EntityTypeMapping TypeName="IsTypeOf(AKUDDb.Sastav)">
+        <MappingFragment StoreEntitySet="Sastavi">
+          <ScalarProperty Name="ID_SS" ColumnName="ID_SS" />
+          <ScalarProperty Name="IME_SS" ColumnName="IME_SS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vodjenje">
+      <EntityTypeMapping TypeName="IsTypeOf(AKUDDb.Vodi)">
+        <MappingFragment StoreEntitySet="Vodjenje">
+          <ScalarProperty Name="KoreografID_KOR" ColumnName="KoreografID_KOR" />
+          <ScalarProperty Name="SastavID_SS" ColumnName="SastavID_SS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Igraci">
+      <EntityTypeMapping TypeName="IsTypeOf(AKUDDb.Igrac)">
+        <MappingFragment StoreEntitySet="Igraci">
+          <ScalarProperty Name="ID_IG" ColumnName="ID_IG" />
+          <ScalarProperty Name="IME_IG" ColumnName="IME_IG" />
+          <ScalarProperty Name="PR_IG" ColumnName="PR_IG" />
+          <ScalarProperty Name="VIS_IG" ColumnName="VIS_IG" />
+          <ScalarProperty Name="POL_IG" ColumnName="POL_IG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pripadanje">
+      <EntityTypeMapping TypeName="IsTypeOf(AKUDDb.Pripada)">
+        <MappingFragment StoreEntitySet="Pripadanje">
+          <ScalarProperty Name="SastavID_SS" ColumnName="SastavID_SS" />
+          <ScalarProperty Name="IgracID_IG" ColumnName="IgracID_IG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Probe">
+      <EntityTypeMapping TypeName="IsTypeOf(AKUDDb.Proba)">
+        <MappingFragment StoreEntitySet="Probe">
+          <ScalarProperty Name="ID_PROB" ColumnName="ID_PROB" />
+          <ScalarProperty Name="SastavID_SS" ColumnName="SastavID_SS" />
+          <ScalarProperty Name="TIP_PROB" ColumnName="TIP_PROB" />
+          <ScalarProperty Name="VR_PROB" ColumnName="VR_PROB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Koncerti">
+      <EntityTypeMapping TypeName="IsTypeOf(AKUDDb.Koncert)">
+        <MappingFragment StoreEntitySet="Koncerti">
+          <ScalarProperty Name="ID_KC" ColumnName="ID_KC" />
+          <ScalarProperty Name="VR_KC" ColumnName="VR_KC" />
+          <ScalarProperty Name="TIP_KC" ColumnName="TIP_KC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(AKUDDb.IgrackiKoncert)">
+        <MappingFragment StoreEntitySet="Koncerti_IgrackiKoncert">
+          <ScalarProperty Name="ID_KC" ColumnName="ID_KC" />
+          <ScalarProperty Name="MuzikaID_MUZ" ColumnName="MuzikaID_MUZ" />
+          <ScalarProperty Name="IG_KOR" ColumnName="IG_KOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(AKUDDb.PevackiKoncert)">
+        <MappingFragment StoreEntitySet="Koncerti_PevackiKoncert">
+          <ScalarProperty Name="ID_KC" ColumnName="ID_KC" />
+          <ScalarProperty Name="PEV_TIP" ColumnName="PEV_TIP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nastupaju">
+      <EntityTypeMapping TypeName="IsTypeOf(AKUDDb.Nastupa)">
+        <MappingFragment StoreEntitySet="Nastupaju">
+          <ScalarProperty Name="IgracID_IG" ColumnName="IgracID_IG" />
+          <ScalarProperty Name="KoncertID_KC" ColumnName="KoncertID_KC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nosnje">
+      <EntityTypeMapping TypeName="IsTypeOf(AKUDDb.Nosnja)">
+        <MappingFragment StoreEntitySet="Nosnje">
+          <ScalarProperty Name="ID_NOS" ColumnName="ID_NOS" />
+          <ScalarProperty Name="NastupaIgracID_IG" ColumnName="NastupaIgracID_IG" />
+          <ScalarProperty Name="NastupaKoncertID_KC" ColumnName="NastupaKoncertID_KC" />
+          <ScalarProperty Name="IME_NOS" ColumnName="IME_NOS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Muzike">
+      <EntityTypeMapping TypeName="IsTypeOf(AKUDDb.Muzika)">
+        <MappingFragment StoreEntitySet="Muzike">
+          <ScalarProperty Name="ID_MUZ" ColumnName="ID_MUZ" />
+          <ScalarProperty Name="TIP_MUZ" ColumnName="TIP_MUZ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

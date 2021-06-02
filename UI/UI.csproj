@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{01B61E26-C635-4AA6-B89D-6A186DA59EB3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UI</RootNamespace>
+    <AssemblyName>UI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="AddViews\IgrackiKoncertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddViews\IgracView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddViews\KombinovanKoncertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddViews\KoncertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddViews\KoreografView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddViews\MuzikaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddViews\NastupaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddViews\NosnjaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddViews\PevackiKoncertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddViews\PripadaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddViews\ProbaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddViews\SastavView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddViews\VodiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeViews\UpdateIgrackiKoncertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeViews\UpdateIgracView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeViews\UpdateKoncertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeViews\UpdateKoreografView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeViews\UpdateMuzikaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeViews\UpdateNastupaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeViews\UpdateNosnjaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeViews\UpdatePevackiKoncertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeViews\UpdatePripadaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeViews\UpdateProbaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeViews\UpdateSastavView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeViews\UpdateVodiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="AddViews\IgrackiKoncertView.xaml.cs">
+      <DependentUpon>IgrackiKoncertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddViews\IgracView.xaml.cs">
+      <DependentUpon>IgracView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddViews\KombinovanKoncertView.xaml.cs">
+      <DependentUpon>KombinovanKoncertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddViews\KoncertView.xaml.cs">
+      <DependentUpon>KoncertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddViews\KoreografView.xaml.cs">
+      <DependentUpon>KoreografView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddViews\MuzikaView.xaml.cs">
+      <DependentUpon>MuzikaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddViews\NastupaView.xaml.cs">
+      <DependentUpon>NastupaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddViews\NosnjaView.xaml.cs">
+      <DependentUpon>NosnjaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddViews\PevackiKoncertView.xaml.cs">
+      <DependentUpon>PevackiKoncertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddViews\PripadaView.xaml.cs">
+      <DependentUpon>PripadaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddViews\ProbaView.xaml.cs">
+      <DependentUpon>ProbaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddViews\SastavView.xaml.cs">
+      <DependentUpon>SastavView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddViews\VodiView.xaml.cs">
+      <DependentUpon>VodiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ChangeViews\UpdateIgrackiKoncertView.xaml.cs">
+      <DependentUpon>UpdateIgrackiKoncertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeViews\UpdateIgracView.xaml.cs">
+      <DependentUpon>UpdateIgracView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeViews\UpdateKoncertView.xaml.cs">
+      <DependentUpon>UpdateKoncertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeViews\UpdateKoreografView.xaml.cs">
+      <DependentUpon>UpdateKoreografView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeViews\UpdateMuzikaView.xaml.cs">
+      <DependentUpon>UpdateMuzikaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeViews\UpdateNastupaView.xaml.cs">
+      <DependentUpon>UpdateNastupaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeViews\UpdateNosnjaView.xaml.cs">
+      <DependentUpon>UpdateNosnjaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeViews\UpdatePevackiKoncertView.xaml.cs">
+      <DependentUpon>UpdatePevackiKoncertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeViews\UpdatePripadaView.xaml.cs">
+      <DependentUpon>UpdatePripadaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeViews\UpdateProbaView.xaml.cs">
+      <DependentUpon>UpdateProbaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeViews\UpdateSastavView.xaml.cs">
+      <DependentUpon>UpdateSastavView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeViews\UpdateVodiView.xaml.cs">
+      <DependentUpon>UpdateVodiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjekatBaze2\ProjekatBaze2.csproj">
+      <Project>{75B05DE9-427A-49E5-A6FF-AE166FFB01EC}</Project>
+      <Name>ProjekatBaze2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

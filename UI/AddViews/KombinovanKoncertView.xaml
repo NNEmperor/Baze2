@@ -1,0 +1,29 @@
+﻿<Window x:Class="UI.AddViews.KombinovanKoncertView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI.AddViews"
+        mc:Ignorable="d"
+        Title="KombinovanKoncertView" Height="400" Width="300">
+    <Grid>
+        <TextBlock Width="100" Height="30" Text="Koreografija:" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30, 50, 0, 0" />
+        <TextBlock Width="100" Height="30" Text="Tip pevanja:" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30, 100, 0, 0" />
+        <TextBlock Width="100" Height="30" Text="Muzika:" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30, 150, 0, 0" />
+
+
+        <TextBox x:Name="textBoxKoreografija" Width="100" Height="30" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 50, 30, 0" />
+        <ComboBox x:Name="comboBoxTipPesme" Width="100" Height="30" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 100, 30, 0">
+            <ComboBox.Items>
+                <ComboBoxItem>Solista</ComboBoxItem>
+                <ComboBoxItem>Hor</ComboBoxItem>
+            </ComboBox.Items>
+        </ComboBox>
+        <ComboBox x:Name="comboBoxMuzika" Width="100" Height="30" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 150, 30, 0">
+
+        </ComboBox>
+
+
+        <Button Click="buttonSubmit_Click" x:Name="buttonSubmit" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="50" Content="Dodaj" Width="100" Margin="0,0,0,20" />
+    </Grid>
+</Window>
